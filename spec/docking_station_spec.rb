@@ -31,7 +31,7 @@ describe DockingStation do
 
   describe '#dock' do
     it "does not accept a bike if over than station capacity" do
-      20.times { subject.dock Bike.new }
+      DockingStation::DEFAULT_CONSTANT.times { subject.dock Bike.new }
       expect { subject.dock Bike.new }.to raise_error "Sorry, the dock is full"
     end
   end

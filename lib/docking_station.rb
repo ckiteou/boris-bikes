@@ -1,7 +1,12 @@
 require_relative 'bike'
 
 class DockingStation
+DEFAULT_CONSTANT = 20
 attr_reader :bikes
+
+  def default_constant
+    @default_constant = 20
+  end
 
   def initialize
     @bikes = []
@@ -20,7 +25,7 @@ attr_reader :bikes
   private
 
   def full?
-    @bikes.count >= 20
+    @bikes.count >= DEFAULT_CONSTANT
   end
 
   def empty?
