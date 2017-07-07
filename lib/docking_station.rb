@@ -11,7 +11,8 @@ class DockingStation
 
   def release_bike
     fail 'No bikes available' if empty?
-    bikes.pop
+    bikes.each_with_index { |bike,i| return bikes.delete_at(i) unless bike.broken?}
+    fail "No working bikes available"
   end
 
   def dock(bike)
@@ -30,3 +31,11 @@ class DockingStation
     bikes.empty?
   end
 end
+
+=begin
+station = DockingStation.new
+bike = Bike.new
+bike.report_broken
+station.dock(bike)
+p station.release_bike
+=end
